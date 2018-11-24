@@ -1,4 +1,6 @@
 package Fields;
+import Components.Player;
 
-public class Field {
+public abstract class Field{
+    public abstract void landOn(Player player);
 }

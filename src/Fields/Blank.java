@@ -1,4 +1,10 @@
 package Fields;
 
-public class Blank {
+import Components.Player;
+
+public class Blank extends Field{
+
+    public void landOn(Player player) {
+
+    }
 }
