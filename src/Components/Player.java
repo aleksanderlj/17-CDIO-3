@@ -7,6 +7,8 @@ public class Player {
     private Account account;
     private Property[] ownedProperties = new Property[16];
     private int position = 0;
+    private boolean inPrison = false;
+    private boolean releaseCard = false;
 
     public Player(String name, int startBalance){
         this.name = name;
@@ -79,5 +81,21 @@ public class Player {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public boolean getInPrison(){
+        return inPrison;
+    }
+
+    public void setInPrison(boolean inPrison) {
+        this.inPrison = inPrison;
+    }
+
+    public boolean getReleaseCard(){
+        return releaseCard;
+    }
+
+    public void setReleaseCard(boolean releaseCard) {
+        this.releaseCard = releaseCard;
     }
 }
