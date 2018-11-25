@@ -3,9 +3,9 @@ package Fields;
 import Components.Player;
 
 public class Start extends Field{
-    private int payday = 2;
+    final int PAYDAY = 2;
 
     public void landOn(Player player) {
-
+        player.addMoney(PAYDAY);
     }
 }

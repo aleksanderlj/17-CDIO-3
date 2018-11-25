@@ -25,6 +25,7 @@ public class Player {
             if(nextIndex != ownedProperties.length){
                 if(ownedProperties[nextIndex] == null){
                     ownedProperties[nextIndex] = newProperty;
+                    newProperty.setOwner(this);
                     propertyAdded = true;
                 }
                 else
