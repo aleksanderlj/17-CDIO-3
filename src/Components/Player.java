@@ -15,6 +15,10 @@ public class Player {
         account = new Account(startBalance);
     }
 
+    public void move(int spaces){
+        position += spaces;
+    }
+
     public void addMoney(int profit){
         account.addMoney(profit);
     }

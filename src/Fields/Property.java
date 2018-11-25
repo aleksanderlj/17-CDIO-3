@@ -8,7 +8,7 @@ public class Property extends Field{
 
     public void landOn(Player player){
         if (player != owner){
-            if (owner != null)
+            if (hasOwner())
                 payRent(player);
             else
                 buyProperty(player);
@@ -31,6 +31,10 @@ public class Property extends Field{
 
         if (saldo >= 0)
             player.addProperty(this);
+    }
+
+    public boolean hasOwner(){
+        return (owner != null);
     }
 
     //--------------------
