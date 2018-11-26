@@ -5,7 +5,7 @@ import Fields.*;
 public class Player {
     private String name;
     private Account account;
-    private Property[] ownedProperties = new Property[16];
+    private Field[] ownedProperties = new Property[16];
     private int position = 0;
     private boolean inPrison = false;
     private boolean releaseCard = false;
@@ -23,7 +23,7 @@ public class Player {
         account.addMoney(profit);
     }
 
-    public void addProperty(Property newProperty){
+    public void addProperty(Field newProperty){
         int nextIndex = 0;
         boolean propertyAdded = false;
 
