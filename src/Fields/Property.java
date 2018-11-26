@@ -6,6 +6,11 @@ public class Property extends Field{
     private int rent;
     private Player owner;
 
+    public Property(int value,int rent){
+        this.value = value;
+        this.rent = rent;
+    }
+
     public void landOn(Player player){
         if (player != owner){
             if (hasOwner())
