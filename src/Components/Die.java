@@ -16,7 +16,7 @@ public class Die {
     //-----------------------------------
     //Ruller terning og returner resultatet
     //-----------------------------------
-    public int rul() {
+    public int roll() {
         Random r = new Random();
         this.faceValue = r.nextInt(this.faceAmount) + 1;
         return this.faceValue;
