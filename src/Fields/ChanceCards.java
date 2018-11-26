@@ -3,7 +3,7 @@ package Fields;
 import Components.Die;
 
 public class ChanceCards {
-    final static int CARDAMOUNT = 24;
+    final static int CARDAMOUNT = 16;
     private int[] cardDeck = new int[CARDAMOUNT];
 
     public ChanceCards(){
