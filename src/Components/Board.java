@@ -4,6 +4,7 @@ import Fields.*;
 
 public class Board {
     private Field[] fields;
+    private Player[] players;
 
     public void createBoard(){
 
@@ -35,6 +36,11 @@ public class Board {
                 };
     }
 
+    public Field[] getFields() {
+        return fields;
+    }
 
-
+    public Player[] getPlayers(){
+        return players;
+    }
 }
