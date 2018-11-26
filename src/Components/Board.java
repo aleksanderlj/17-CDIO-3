@@ -6,9 +6,8 @@ public class Board {
     private Field[] fields;
     private Player[] players;
 
-    public void createBoard(){
-
-        Field[] fields = {
+    public Board(){
+        fields = {
                 new Start(),
                 new Property(1,1),
                 new Property(1,1),
