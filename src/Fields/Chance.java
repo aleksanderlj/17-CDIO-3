@@ -12,19 +12,23 @@ public class Chance extends Field{
     //0=Kat, 1=Hund, 2=Bil, 3=Skib
     public void landOn(Player player) {
         boolean cardTaken = false;
+        String description = "";
 
+        String description = "";
         do {
             if (cardIndex < cardDeck.length) {
                 switch (cardDeck[cardIndex]) {
                     case 1: {
                         player.setPosition(0);
                         fields[0].landOn(player);
+                        description = "Ryk frem til start \n Modtag 2M";
                         break;
                     }
                     case 2: {
                         int choice = ???1, 2, 3, 4, 5;
                         player.move(choice);
                         fields[player.getPosition()].landOn(player);
+                        description = "Ryk op til 5 felter frem. \n Indtast antal felter:";
                         break;
                     }
                     case 3: {
@@ -34,6 +38,8 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et orange felt, hvis feltet er ledigt får du det gratis \n " +
+                                "Ellers skal du betale leje til ejeren, \n vælg felt 10 eller 11:";
                         break;
                     }
                     case 4: {
@@ -43,10 +49,13 @@ public class Chance extends Field{
                             fields[player.getPosition()].landOn(player);
                         } else
                             landOn(player);
+                        description = "Ryk et felt frem eller træk et nyt chancekort. " +
+                                "\n Tast 1 for at rykke frem, 2 for at trække kort:";
                         break;
                     }
                     case 5: {
                         player.addMoney(-2);
+                        description = "Du har spist for meget slik, betal 2M";
                         break;
                     }
                     case 6: {
@@ -56,6 +65,8 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et orange eller grønt felt, er det ledigt får du det gratis \n" +
+                                "Ellers betal leje til ejeren. \n Vælg felt 10,11,19 eller 20:";
                         break;
                     }
                     case 7: {
@@ -65,15 +76,19 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et lyseblåt felt, hvis feltet er ledigt får du det gratis \n " +
+                                "Ellers skal du betale leje til ejeren, \n vælg felt 4 eller 5:";
                         break;
                     }
                     case 8: {
                         player.setReleaseCard(true);
+                        description = "Du løslades uden omkostninger, kortet gemmes til du får behov for det.";
                         break;
                     }
                     case 9: {
                         player.setPosition(23);
                         fields[23].landOn();
+                        description = "Ryk frem til Strandpromenaden.";
                         break;
                     }
                     case 10: {
@@ -81,6 +96,7 @@ public class Chance extends Field{
                             players[n].addMoney(-1);
                             player.addMoney(1);
                         }
+                        description = "Det er din fødselsdag! Alle andre spillere giver dig 1M.";
                         break;
                     }
                     case 11: {
@@ -90,10 +106,13 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et orange eller grønt felt, er det ledigt får du det gratis \n" +
+                                "Ellers betal leje til ejeren. \n Vælg felt 7,8,22 eller 23 ";
                         break;
                     }
                     case 12: {
                         player.addMoney(2);
+                        description = "Du har lavet alle dine lektier, modtag 2M fra banken.";
                         break;
                     }
                     case 13: {
@@ -103,6 +122,8 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et rødt felt, er feltet ledigt får du det gratis. \n" +
+                                "Ellers betal leje til ejeren. \n Vælg felt 13 eller 14:";
                         break;
                     }
                     case 14: {
@@ -111,6 +132,8 @@ public class Chance extends Field{
                             fields[10].payRent(player);
                         else
                             player.addProperty(fields[10]);
+                        description = "Ryk frem til skaterparken for at lave det perfekte grind! \n " +
+                                "Hvis ingen ejer den får du den gratis! \n Ellers betal leje til ejeren.";
                         break;
                     }
                     case 15: {
@@ -120,6 +143,8 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et lyseblåt eller rødt felt, er det ledigt får du det gratis. \n" +
+                                "Ellers skal du betale leje til ejeren.\n Vælg felt 4,5,13 eller 14:";
                         break;
                     }
                     case 16: {
@@ -129,6 +154,8 @@ public class Chance extends Field{
                             fields[choice].payRent(player);
                         else
                             player.addProperty(fields[choice]);
+                        description = "Ryk frem til et lyseblåt eller rødt felt, er det ledigt får du det gratis. \n" +
+                                "Ellers skal du betale leje til ejeren.\n Vælg felt 1,2,16 eller 17:";
                         break;
                     }
                     default: {
