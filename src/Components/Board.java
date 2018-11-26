@@ -3,8 +3,9 @@ package Components;
 import Fields.*;
 
 public class Board {
+    private int numberPlayers;
     private Field[] fields;
-    private Player[] players;
+    private Player[] players = new Player[numberPlayers];
 
     public Board(){
         fields = {
@@ -34,6 +35,27 @@ public class Board {
                 new Property(5,5)
                 };
     }
+
+    public Player[] createPlayers(){
+        numberPlayers = 2;
+
+        if (numberPlayers < 2){
+            System.out.println("For få spillere");
+        }
+
+        else if (numberPlayers > 4){
+            System.out.println("for mange spillere");
+        }
+
+        else{
+            for (int i = 0 ; i < players.length ; i++){
+                players[i] = new Player();
+            }
+        }
+        return players;
+    }
+
+
 
     public Field[] getFields() {
         return fields;
