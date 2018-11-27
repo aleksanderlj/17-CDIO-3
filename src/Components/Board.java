@@ -1,14 +1,17 @@
 package Components;
 
 import Fields.*;
+import java.util.Scanner;
 
 public class Board {
+    private int numberPlayers, startBalance;
     private Field[] fields;
-    private Player[] players;
+    private Player[] players = new Player[numberPlayers];
+    private String playerName;
 
-    public void createBoard(){
 
-        Field[] fields = {
+    public Board(){
+        fields = {
                 new Start(),
                 new Property(1,1),
                 new Property(1,1),
@@ -35,6 +38,33 @@ public class Board {
                 new Property(5,5)
                 };
     }
+
+    public Player[] createPlayers(){
+        if (numberPlayers < 2) {
+            System.out.println("For få spillere");
+        }
+        else if (numberPlayers > 4) {
+            System.out.println("for mange spillere");
+        }
+        else {
+
+            if (numberPlayers == 2) {
+                startBalance = 20;
+            }
+            else if (numberPlayers == 3){
+                startBalance = 18;
+            }
+            else{
+                startBalance = 16;
+            }
+
+            for (int i = 0; i < players.length; i++) {
+                players[i] = new Player(playerName, startBalance);
+            }
+        }
+        return players;
+    }
+
 
     public Field[] getFields() {
         return fields;
