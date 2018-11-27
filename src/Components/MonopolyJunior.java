@@ -2,6 +2,8 @@ package Components;
 
 import Fields.Field;
 
+import java.util.Scanner;
+
 public class MonopolyJunior {
     private static Board board  = new Board();
 
@@ -30,6 +32,8 @@ public class MonopolyJunior {
                 if (players[n].getBalance() < 0){
                     endGame();
                 }
+                Scanner turn = new Scanner(System.in);
+                turn.nextLine();
             }
         }
     }
@@ -41,7 +45,8 @@ public class MonopolyJunior {
         int max = getMax(findWinner);
         for(int n = 0;n < players.length;n++){
             if(max == players[n].getBalance()){
-                players[n].win;
+                System.out.println("Spiller " + players[n] + " har vundet");
+                //players[n].win;
                 //Lav en win metode
             }
         }
