@@ -8,7 +8,7 @@ public class MonopolyJunior {
     static Player[] players = board.createPlayers();
     //Gætter på der skal laves en createPlayers metode
     static Field[] field = board.getFields();
-    static int[] ting = new int[players.length];
+    static int[] findWinner = new int[players.length];
 
     public static void main(String[] args) {
         board.createBoard();
@@ -36,9 +36,9 @@ public class MonopolyJunior {
 
     public static void endGame(){
         for (int n = 0;n < players.length;n++){
-            ting[n] = players[n].getBalance();
+            findWinner[n] = players[n].getBalance();
         }
-        int max = getMax(ting);
+        int max = getMax(findWinner);
         for(int n = 0;n < players.length;n++){
             if(max == players[n].getBalance()){
                 players[n].win;
