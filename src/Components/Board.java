@@ -40,9 +40,6 @@ public class Board {
     }
 
     public Player[] createPlayers(){
-        Scanner input = new Scanner(System.in);
-        numberPlayers = input.nextInt();
-
         if (numberPlayers < 2) {
             System.out.println("For få spillere");
         }
@@ -62,7 +59,6 @@ public class Board {
             }
 
             for (int i = 0; i < players.length; i++) {
-                playerName = input.nextLine();
                 players[i] = new Player(playerName, startBalance);
             }
         }
