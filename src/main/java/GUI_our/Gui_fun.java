@@ -12,7 +12,7 @@ import static gui_fields.GUI_Car.Type.CAR;
 import static java.awt.Color.*;
 
 public class Gui_fun {
-    private GUI board;
+    private GUI gui_board;
     private GUI_Player[] gui_players;
 
     private Color brown = new Color(125,52,32);
@@ -20,7 +20,7 @@ public class Gui_fun {
     private Color olivedrab = new Color(107,142,35);
     private Color darkolive = new Color(98, 122, 52);
 
-    public GUI createBoard(){
+    public void createBoard(){
         GUI_Field[] fields = new GUI_Field[]{
                 new GUI_Start("Start", "Modtag 2M", "Start", green, red),
                 new GUI_Street("Burgerbaren", "1M", "Burgerbaren", "Leje: 1", brown, black),
@@ -48,13 +48,11 @@ public class Gui_fun {
                 new GUI_Street("Strand-\npromenaden", "5M", "Strandpromenaden", "Leje: 5", blue, black),
         };
 
-        this.board = new GUI(fields, darkolive);
-        board.setDie(1);
-
-        return board;
+        this.gui_board = new GUI(fields, darkolive);
+        gui_board.setDie(1);
     }
 
-    public GUI_Player[] createPlayers(Player[] players){
+    public void createPlayers(Player[] players){
         GUI_Player player1=null, player2=null, player3=null, player4=null;
 
         GUI_Player[] gui_players = new GUI_Player[2];
@@ -92,21 +90,25 @@ public class Gui_fun {
 
         }
 
-
         this.gui_players = gui_players;
-        return gui_players;
     }
 
-    public GUI getBoard() {
-        return board;
+    public void addPlayersToBoard(){
+        for(GUI_Player player : gui_players){
+            gui_board.addPlayer(player);
+        }
+    }
+
+    public GUI getGui_Board() {
+        return gui_board;
     }
 
     public GUI_Player[] getGui_Players() {
         return gui_players;
     }
 
-    public void setPlayerPos(Player[] players){
-        GUI_Field[] fields = board.getFields();
+    public void updatePlayerPos(Player[] players){
+        GUI_Field[] fields = gui_board.getFields();
         for(int n=0 ; n < players.length ; n++){
             for (int i=0 ; i < fields.length; i++){
                 if (players[n].getPosition() == i){
