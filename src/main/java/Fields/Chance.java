@@ -155,28 +155,6 @@ public class Chance extends Field{
             }
         } while(!cardTaken);
 
-
-        //***********"LAV AMOUNT OF CARDS MINDRE HVIS DU IKKE INDSÆTTER SPILLER-SPECIFIKKE CHANCEKORT";************
-        /*
-        // Spiller-specifikke chancekort:
-        //1
-        //6
-        //12
-        //13
-        //19 LAV if-statement ALT EFTER OM DER ER EN FJERDE SPILLER. ELLERS SKAL DE TAGE ET NYT KORT.
-        players[3].setPosition(0);
-        fields[0].landOn(players[3]);
-        //20 LAV if-statement ALT EFTER OM DER ER EN TREDJE SPILLER. ELLERS SKAL DE TAGE ET NYT KORT.
-        players[2].move(1);
-        fields[players[2].getPosition()].landOn(players[2]);
-        //21
-        fields[0].landOn(players[1]);
-        //22 Tjek alle spiller positioner og lav:
-        // players[0].setPosition(forrest + 1);
-        // fields[players[2].getPosition()].landOn(players[2]);
-        */
-
-
     }
 
     public static int getCardIndex() {
