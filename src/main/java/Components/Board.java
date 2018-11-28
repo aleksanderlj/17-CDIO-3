@@ -4,10 +4,10 @@ import Fields.*;
 import java.util.Scanner;
 
 public class Board {
-    private int numberPlayers, startBalance;
+    private int startBalance;
     private Field[] fields;
-    private Player[] players = new Player[numberPlayers];
-    private String playerName;
+    private Player[] players;
+    private String playerName = "Navn";
 
 
     public Board(){
@@ -39,7 +39,7 @@ public class Board {
         };
     }
 
-    public Player[] createPlayers(){
+    public Player[] createPlayers(int numberPlayers){
         if (numberPlayers < 2) {
             System.out.println("For få spillere");
         }
@@ -49,12 +49,15 @@ public class Board {
         else {
 
             if (numberPlayers == 2) {
+                players = new Player[2];
                 startBalance = 20;
             }
             else if (numberPlayers == 3){
+                players = new Player[3];
                 startBalance = 18;
             }
             else{
+                players = new Player[4];
                 startBalance = 16;
             }
 
