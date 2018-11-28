@@ -40,31 +40,23 @@ public class Board {
     }
 
     public Player[] createPlayers(int numberPlayers){
-        if (numberPlayers < 2) {
-            System.out.println("For få spillere");
+        if (numberPlayers == 2) {
+            players = new Player[numberPlayers];
+            startBalance = 20;
         }
-        else if (numberPlayers > 4) {
-            System.out.println("for mange spillere");
+        else if (numberPlayers == 3){
+            players = new Player[numberPlayers];
+            startBalance = 18;
         }
-        else {
+        else{
+            players = new Player[numberPlayers];
+            startBalance = 16;
+        }
 
-            if (numberPlayers == 2) {
-                players = new Player[2];
-                startBalance = 20;
-            }
-            else if (numberPlayers == 3){
-                players = new Player[3];
-                startBalance = 18;
-            }
-            else{
-                players = new Player[4];
-                startBalance = 16;
-            }
-
-            for (int i = 0; i < players.length; i++) {
-                players[i] = new Player(playerName, startBalance);
-            }
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player(playerName, startBalance);
         }
+
         return players;
     }
 
