@@ -8,7 +8,7 @@ public abstract class Field{
 
 
 
-    //Disse bliver nødt til at være her for at chance-kortene virker
+    //Disse bliver nødt til at være her for at field metoderne virker
     public boolean hasOwner(){
         return false;
     }

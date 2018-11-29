@@ -52,6 +52,8 @@ public class Game {
                 gui.updatePlayerPos(players);
                 gui.updateOwnership(fields, players);
 
+                gui.displayEffect(players[n], n);
+
 
 
                 if (players[n].getBalance() < 0) {

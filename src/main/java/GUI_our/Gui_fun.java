@@ -112,10 +112,37 @@ public class Gui_fun {
         for(int i=0 ; i < data_players.length ; i++){
             for(int h=0 ; h < data_fields.length ; h++){
                 if(data_fields[h].getOwner() == data_players[i]){
-                    gui_fields[h].setDescription(gui_fields[h].getDescription() + "<" + gui_players[i].getName() + ">");
+                    gui_fields[h].setDescription(gui_fields[h].getTitle() + " <" + gui_players[i].getName() + ">");
                 }
             }
         }
+    }
+
+    public void displayEffect(Player player, int index){
+        String text = "";
+        int pos = player.getPosition();
+
+        text += gui_players[index].getName() + " landte på " + gui_fields[pos].getTitle() + "\n";
+
+        if (pos == 0)
+            text += "Du får 2M ekstra!";
+
+        if ((pos % 6) == 3) {
+            text += "Træk et chancekort";
+        }
+
+        if (pos == 6)
+            text += "Du er på besøg i fængslet";
+
+        if (pos == 18)
+            text += "Du blev smidt i fængsel!";
+
+
+
+
+
+
+        gui_board.displayChanceCard(text);
     }
 
     public String[] setPlayerNames(int numPlayers){
