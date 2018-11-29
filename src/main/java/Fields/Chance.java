@@ -13,6 +13,7 @@ public class Chance extends Field{
     public void landOn(Player player) {
         boolean cardTaken = false;
         String description = "";
+        playerMoved = false;
 
         do {
             if (cardIndex < cardDeck.length) {
