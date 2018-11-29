@@ -175,6 +175,22 @@ public class Gui_fun {
         updatePlayerBalance(players);
     }
 
+    public void displayWinner(Player[] players){
+        int maxValue = 0;
+        String winner = "", text;
+
+        for(int n=0 ; n < players.length ; n++){
+            if (players[n].getBalance() > maxValue) {
+                maxValue = players[n].getBalance();
+                winner = gui_players[n].getName();
+            }
+        }
+
+        text = winner + " har vundet!";
+
+        gui_board.displayChanceCard(text);
+    }
+
     private String[] setPlayerNames(int numPlayers){
         String[] names = new String[numPlayers];
 

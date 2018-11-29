@@ -69,6 +69,9 @@ public class Game {
                 }
             }
         } while(noLoser);
+
+        gui.displayWinner(players);
+
     }
 
     public Board getBoard() {
