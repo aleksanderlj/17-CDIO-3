@@ -8,9 +8,13 @@ public class Player {
     private int position = 0;
     private boolean inPrison = false;
     private boolean releaseCard = false;
+    private static int nextID = 0;
+    private int id;
 
     public Player(int startBalance){
         account = new Account(startBalance);
+        id = nextID;
+        nextID++;
     }
 
     public void move(int spaces){
@@ -93,5 +97,9 @@ public class Player {
 
     public void setReleaseCard(boolean releaseCard) {
         this.releaseCard = releaseCard;
+    }
+
+    public int getId() {
+        return id;
     }
 }

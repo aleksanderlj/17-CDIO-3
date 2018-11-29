@@ -11,32 +11,33 @@ public class Board {
 
 
     public Board(){
-        fields = new Field[]{
-                new Start(),
-                new Property(1, 1),
-                new Property(1, 1),
-                new Chance(),
-                new Property(1, 1),
-                new Property(1, 1),
-                new Blank(),
-                new Property(2, 2),
-                new Property(2, 2),
-                new Chance(),
-                new Property(2, 2),
-                new Property(2, 2),
-                new Blank(),
-                new Property(3, 3),
-                new Property(3, 3),
-                new Chance(),
-                new Property(3, 3),
-                new Property(3, 3),
-                new GoToPrison(),
-                new Property(4, 4),
-                new Property(4, 4),
-                new Chance(),
-                new Property(5, 5),
-                new Property(5, 5)
-        };
+        int i = 0;
+        fields = new Field[24];
+
+        fields[i++] = new Start();
+        fields[i++] = new Property(1, 1);
+        fields[i++] = new Property(1, 1);
+        fields[i++] = new Chance(fields);
+        fields[i++] = new Property(1, 1);
+        fields[i++] = new Property(1, 1);
+        fields[i++] = new Blank();
+        fields[i++] = new Property(2, 2);
+        fields[i++] = new Property(2, 2);
+        fields[i++] = new Chance(fields);
+        fields[i++] = new Property(2, 2);
+        fields[i++] = new Property(2, 2);
+        fields[i++] = new Blank();
+        fields[i++] = new Property(3, 3);
+        fields[i++] = new Property(3, 3);
+        fields[i++] = new Chance(fields);
+        fields[i++] = new Property(3, 3);
+        fields[i++] = new Property(3, 3);
+        fields[i++] = new GoToPrison();
+        fields[i++] = new Property(4, 4);
+        fields[i++] = new Property(4, 4);
+        fields[i++] = new Chance(fields);
+        fields[i++] = new Property(5, 5);
+        fields[i++] = new Property(5, 5);
     }
 
     public Player[] createPlayers(int numPlayers){

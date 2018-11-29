@@ -5,6 +5,7 @@ import Fields.Field;
 import java.util.Scanner;
 
 public class MonopolyJunior {
+    /*
     private static Board board  = new Board();
 
     static Player[] players = board.createPlayers(4);
@@ -65,4 +66,5 @@ public class MonopolyJunior {
     public static Board getBoard(){
         return board;
     }
+    */
 }

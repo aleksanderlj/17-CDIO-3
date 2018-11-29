@@ -43,17 +43,34 @@ public class Game {
                 int roll = die.roll();
                 gui_board.setDie(roll);
 
+                int pastPosition = players[n].getPosition();
+
                 players[n].move(roll);
                 int position = players[n].getPosition();
 
-                gui.displayEffect(players[n], n, fields, players);
+                if (pastPosition > position)
+                    players[n].addMoney(2);
 
-                fields[position].landOn(players[n]);
+                gui.update(fields, players);
 
-                gui.getGui_Players()[n].setBalance(players[n].getBalance());
+                boolean playerMoved = false;
+                if ((position % 6) == 3) {
+                    playerMoved = fields[position].landOn(players[n]);
+                    gui.update(fields, players);
+                    gui.displayEffect(3, n, fields);
+                    gui_board.getUserButtonPressed("OK","OK");
+                    if(playerMoved){
+                        gui.displayEffect(position, n, fields);
+                        fields[position].landOn(players[n]);
+                    }
+                }
+                else{
+                    gui.displayEffect(position, n, fields);
+                    fields[position].landOn(players[n]);
+                }
 
-                gui.updatePlayerPos(players);
-                gui.updateOwnership(fields, players);
+
+                gui.update(fields, players);
 
 
 

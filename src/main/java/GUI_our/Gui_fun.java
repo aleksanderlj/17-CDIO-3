@@ -2,8 +2,15 @@ package GUI_our;
 
 
 import Components.Player;
-import Fields.Field;
-import gui_fields.*;
+import Fields.*;
+import gui_fields.GUI_Car;
+import gui_fields.GUI_Chance;
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Jail;
+import gui_fields.GUI_Player;
+import gui_fields.GUI_Refuge;
+import gui_fields.GUI_Start;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -118,9 +125,9 @@ public class Gui_fun {
         }
     }
 
-    public void displayEffect(Player player, int index, Field[] data_fields, Player[] data_players){
+    public boolean displayEffect(int pos, int index, Field[] data_fields){
         String text = "";
-        int pos = player.getPosition();
+        boolean chance = false;
 
         text += gui_players[index].getName() + " landte på " + gui_fields[pos].getTitle() + "\n";
 
@@ -128,26 +135,47 @@ public class Gui_fun {
             text += "Du får 2M ekstra!";
 
         else if ((pos % 6) == 3) {
-            text += "CHANCEKORT EFFEKT";
+            text += Chance.getDescription();
+            chance = true;
         }
 
         else if (pos == 6)
             text += "Du er på besøg i fængslet";
 
+        else if (pos == 12)
+            text += "";
+
         else if (pos == 18)
             text += "Du blev smidt i fængsel!";
 
         else{
-            if (data_fields[pos].hasOwner())
-                text += "Betal " + data_fields[pos].getRent() + "M til " + data_fields[pos].getOwner();
+            if (data_fields[pos].hasOwner()){
+                if (data_fields[pos].getOwner().getId() == index)
+                    text += "Du ejer dette felt";
+                else
+                    text += "Betal " + data_fields[pos].getRent() + "M til " + gui_players[data_fields[pos].getOwner().getId()].getName();
+            }
             else
                 text += "Du købte den for " + data_fields[pos].getValue() + "M";
         }
 
         gui_board.displayChanceCard(text);
+
+        return chance;
     }
 
-    public String[] setPlayerNames(int numPlayers){
+    public void updatePlayerBalance(Player[] players){
+        for (int n=0 ; n < gui_players.length ; n++)
+            gui_players[n].setBalance(players[n].getBalance());
+    }
+
+    public void update(Field[] fields, Player[] players){
+        updatePlayerPos(players);
+        updateOwnership(fields, players);
+        updatePlayerBalance(players);
+    }
+
+    private String[] setPlayerNames(int numPlayers){
         String[] names = new String[numPlayers];
 
         for (int n=0 ; n < numPlayers ; n++){
