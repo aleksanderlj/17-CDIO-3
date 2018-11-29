@@ -45,14 +45,15 @@ public class Game {
 
                 players[n].move(roll);
                 int position = players[n].getPosition();
+
+                gui.displayEffect(players[n], n, fields, players);
+
                 fields[position].landOn(players[n]);
 
                 gui.getGui_Players()[n].setBalance(players[n].getBalance());
 
                 gui.updatePlayerPos(players);
                 gui.updateOwnership(fields, players);
-
-                gui.displayEffect(players[n], n);
 
 
 

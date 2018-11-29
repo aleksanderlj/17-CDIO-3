@@ -118,7 +118,7 @@ public class Gui_fun {
         }
     }
 
-    public void displayEffect(Player player, int index){
+    public void displayEffect(Player player, int index, Field[] data_fields, Player[] data_players){
         String text = "";
         int pos = player.getPosition();
 
@@ -127,20 +127,22 @@ public class Gui_fun {
         if (pos == 0)
             text += "Du får 2M ekstra!";
 
-        if ((pos % 6) == 3) {
-            text += "Træk et chancekort";
+        else if ((pos % 6) == 3) {
+            text += "CHANCEKORT EFFEKT";
         }
 
-        if (pos == 6)
+        else if (pos == 6)
             text += "Du er på besøg i fængslet";
 
-        if (pos == 18)
+        else if (pos == 18)
             text += "Du blev smidt i fængsel!";
 
-
-
-
-
+        else{
+            if (data_fields[pos].hasOwner())
+                text += "Betal " + data_fields[pos].getRent() + "M til " + data_fields[pos].getOwner();
+            else
+                text += "Du købte den for " + data_fields[pos].getValue() + "M";
+        }
 
         gui_board.displayChanceCard(text);
     }

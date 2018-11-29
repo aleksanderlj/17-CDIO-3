@@ -20,4 +20,8 @@ public abstract class Field{
     public void release(Player player){}
 
     public Player getOwner(){return null;}
+
+    public int getValue(){return 0;}
+
+    public int getRent(){return 0;}
 }
