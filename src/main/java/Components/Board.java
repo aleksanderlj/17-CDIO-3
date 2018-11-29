@@ -7,7 +7,7 @@ public class Board {
     private int startBalance;
     private Field[] fields;
     private Player[] players;
-    private String playerName = "Navn";
+    private String playerName = "Spiller";
 
 
     public Board(){
@@ -39,32 +39,14 @@ public class Board {
         };
     }
 
-    public Player[] createPlayers(int numberPlayers){
-        if (numberPlayers < 2) {
-            System.out.println("For få spillere");
-        }
-        else if (numberPlayers > 4) {
-            System.out.println("for mange spillere");
-        }
-        else {
+    public Player[] createPlayers(int numPlayers){
+        players = new Player[numPlayers];
+        int startBalance = 24 - (numPlayers * 2);
 
-            if (numberPlayers == 2) {
-                players = new Player[2];
-                startBalance = 20;
-            }
-            else if (numberPlayers == 3){
-                players = new Player[3];
-                startBalance = 18;
-            }
-            else{
-                players = new Player[4];
-                startBalance = 16;
-            }
-
-            for (int i = 0; i < players.length; i++) {
-                players[i] = new Player(playerName, startBalance);
-            }
+        for (int n=0 ; n < numPlayers ; n++){
+            players[n] = new Player(startBalance);
         }
+
         return players;
     }
 

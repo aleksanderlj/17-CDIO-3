@@ -8,7 +8,7 @@ public abstract class Field{
 
 
 
-    //Disse tre bliver nødt til at være her for at chance-kortene virker
+    //Disse bliver nødt til at være her for at chance-kortene virker
     public boolean hasOwner(){
         return false;
     }
@@ -16,4 +16,8 @@ public abstract class Field{
     public void payRent(Player player){}
 
     public void setOwner(Player player){}
+
+    public void release(Player player){}
+
+    public Player getOwner(){return null;}
 }

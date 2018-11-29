@@ -7,13 +7,13 @@ import java.util.Scanner;
 public class MonopolyJunior {
     private static Board board  = new Board();
 
-    static Player[] players = board.createPlayers();
+    static Player[] players = board.createPlayers(4);
     //Gætter på der skal laves en createPlayers metode
     static Field[] field = board.getFields();
     static int[] findWinner = new int[players.length];
 
     public static void main(String[] args) {
-        board.createBoard();
+        //board.createBoard();
 
         Die die = new Die(6);
 
