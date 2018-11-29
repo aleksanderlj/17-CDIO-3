@@ -6,13 +6,15 @@ public class Chance extends Field{
     private static ChanceCards chanceCards = new ChanceCards();
     private static int[] cardDeck = chanceCards.getCardDeck();
     private static int cardIndex = 0;
-    private static Field[] fields = MonopolyJunior.getBoard().getFields();
-    private static Player[] players = MonopolyJunior.getBoard().getPlayers();
-    private static boolean playerMoved;
+    private Field[] fields;
+    private static String description = "";
+
+    public Chance(Field[] fields){
+        this.fields = fields;
+    }
 
     public void landOn(Player player) {
         boolean cardTaken = false;
-        String description = "";
         playerMoved = false;
 
         do {
@@ -28,7 +30,7 @@ public class Chance extends Field{
                     case 2: {
                         player.move(3);
                         fields[player.getPosition()].landOn(player);
-                        description = "Du har fundet noget superbenzin!!! ryk 3 felter frem.";
+                        description = "Du har fundet noget superbenzin!!! Ryk 3 felter frem.";
                         playerMoved = true;
                         break;
                     }
@@ -42,7 +44,7 @@ public class Chance extends Field{
                             player.addProperty(fields[23]);
                         }
                         description = "Ryk frem til Strandpromonaden, hvis ingen ejer Strandpromonanden får du den gratis \n " +
-                                "Ellers skal du betale leje til ejeren.";
+                                "ellers skal du betale leje til ejeren.";
                         playerMoved = true;
                         break;
                     }
@@ -61,7 +63,7 @@ public class Chance extends Field{
                             player.addProperty(fields[7]);
                         }
                         description = "Ryk frem til museet, hvis ingen ejer museet får du den gratis \n " +
-                                "Ellers skal du betale leje til ejeren.";
+                                "ellers skal du betale leje til ejeren.";
                         playerMoved = true;
                         break;
                     }
@@ -104,16 +106,13 @@ public class Chance extends Field{
                     }
                     case 9: {
                         player.addMoney(12);
-                        description = "Du har fundet en Goldmine!!! du modtager 12M.";
+                        description = "Du har fundet en Goldmine!!! Du modtager 12M.";
                         playerMoved = false;
                         break;
                     }
                     case 10: {
-                        for (int n = 0; n < players.length; n++) {
-                            players[n].addMoney(-1);
-                            player.addMoney(1);
-                        }
-                        description = "Det er din fødselsdag! Alle andre spillere giver dig 1M.";
+                        player.addMoney(4);
+                        description = "Du brugte din masterball på en mewtwo, du modtager 4M";
                         playerMoved = false;
                         break;
                     }
@@ -131,7 +130,7 @@ public class Chance extends Field{
                     }
                     case 13: {
                         player.move(-4);
-                        description = "Du har kørt for hurtigt og modtager en fartbøde, ryk 3 felter tilbage.";
+                        description = "Du har kørt for hurtigt og modtager en fartbøde, ryk 4 felter tilbage.";
                         playerMoved = false;
                         break;
                     }
@@ -149,7 +148,7 @@ public class Chance extends Field{
                             player.addProperty(fields[10]);
                         }
                         description = "Ryk frem til skaterparken for at lave det perfekte grind! \n " +
-                                "Hvis ingen ejer den får du den gratis! \n Ellers betal leje til ejeren.";
+                                "Hvis ingen ejer den får du den gratis! \n ellers betal leje til ejeren.";
                         playerMoved = true;
                         break;
                     }
@@ -161,7 +160,7 @@ public class Chance extends Field{
                     }
                     case 16: {
                         player.addMoney(-4);
-                        description = "Du brugte din materball på en pidgey, betal 4M";
+                        description = "Du brugte din masterball på en pidgey, betal 4M";
                         playerMoved = false;
                         break;
                     }
@@ -188,7 +187,7 @@ public class Chance extends Field{
         return cardDeck;
     }
 
-    public static boolean getPlayerMoved(){
-        return playerMoved;
+    public static String getDescription() {
+        return description;
     }
 }

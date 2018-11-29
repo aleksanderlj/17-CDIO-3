@@ -3,20 +3,24 @@ package Components;
 import Fields.*;
 
 public class Player {
-    private String name;
     private Account account;
     private Field[] ownedProperties = new Property[16];
     private int position = 0;
     private boolean inPrison = false;
     private boolean releaseCard = false;
+    private static int nextID = 0;
+    private int id;
 
-    public Player(String name, int startBalance){
-        this.name = name;
+    public Player(int startBalance){
         account = new Account(startBalance);
+        id = nextID;
+        nextID++;
     }
 
     public void move(int spaces){
         position += spaces;
+        if (position > 23)
+            position = position - 23;
     }
 
     public void addMoney(int profit){
@@ -63,14 +67,6 @@ public class Player {
     //--------------------
     // Getters og setters
     //--------------------
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getBalance(){
         return account.getBalance();
     }
@@ -101,5 +97,9 @@ public class Player {
 
     public void setReleaseCard(boolean releaseCard) {
         this.releaseCard = releaseCard;
+    }
+
+    public int getId() {
+        return id;
     }
 }
