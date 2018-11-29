@@ -36,7 +36,7 @@ public class Game {
             for(int n=0 ; n < players.length ; n++){
 
                 if (players[n].getInPrison()) {
-                    fields[6].release(players[n]);
+                    fields[18].release(players[n]);
                 }
 
                 gui_board.getUserButtonPressed("Roll","Roll");
@@ -44,7 +44,6 @@ public class Game {
                 gui_board.setDie(roll);
 
                 int pastPosition = players[n].getPosition();
-
                 players[n].move(roll);
                 int position = players[n].getPosition();
 
@@ -53,26 +52,16 @@ public class Game {
 
                 gui.update(fields, players);
 
-                boolean playerMoved = false;
                 if ((position % 6) == 3) {
-                    playerMoved = fields[position].landOn(players[n]);
-                    gui.update(fields, players);
+                    fields[position].landOn(players[n]);
                     gui.displayEffect(3, n, fields);
-                    gui_board.getUserButtonPressed("OK","OK");
-                    if(playerMoved){
-                        gui.displayEffect(position, n, fields);
-                        fields[position].landOn(players[n]);
-                    }
                 }
                 else{
                     gui.displayEffect(position, n, fields);
                     fields[position].landOn(players[n]);
                 }
 
-
                 gui.update(fields, players);
-
-
 
                 if (players[n].getBalance() < 0) {
                     noLoser = false;
