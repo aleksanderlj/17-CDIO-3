@@ -7,7 +7,7 @@ public class Chance extends Field{
     private static int[] cardDeck = chanceCards.getCardDeck();
     private static int cardIndex = 0;
     private Field[] fields;
-    private static String description = "";
+    private static String[] description;
 
     public Chance(Field[] fields){
         this.fields = fields;
@@ -21,86 +21,69 @@ public class Chance extends Field{
                 switch (cardDeck[cardIndex]) {
                     case 1: {
                         player.addMoney(-8);
-                        description = "Du tabte til din pokemon rival i først battel, betal 8M.";
                         break;
                     }
                     case 2: {
                         player.setReleaseCard(true);
-                        description = "Du får en get-out-of-jail-free-card :=)";
                         break;
                     }
 
                     case 3: {
                         player.addMoney(-6);
-                        description = "Din bil har kørt i forlang tid og skal burge reperationer, betal 6M.";
                         break;
                     }
                     case 4: {
                         player.addMoney(-5);
-                        description = "Du har spist ALT for meget slik, betal 5M.";
                         break;
                     }
                     case 5: {
                         player.addMoney(-4);
-                        description = "Du brugte din masterball på en pidgey, betal 4M";
                     }
                     case 6: {
                         player.addMoney(-3);
-                        description = "Du har kørt for hurtigt og har fået en fartbøde, betal 3M.";
                         break;
                     }
                     case 7: {
                         player.addMoney(-2);
-                        description = "Du har spist for meget slik, betal 2M.";
                         break;
                     }
                     case 8: {
                         player.addMoney(-1);
-                        description = "Du har spist slik, betal 1M.";
                         break;
                     }
                     case 9: {
                         player.addMoney(1);
-                        description = "Du går en tur, og ser nogle penge liggende på vejen, modtag 1M";
                         break;
                     }
                     case 10: {
                         player.addMoney(2);
-                        description = "Du er heldig at finde et lille lotteri, modtag 2M";
                         break;
                     }
                     case 11: {
                         player.addMoney(3);
-                        description = "Du har fundet en shiny pokemon! modtag 3M";
                         break;
                     }
                     case 12: {
                         player.addMoney(4);
-                        description = "Du har brugt din masterball på Mewtwo, modtag 4M";
                         break;
                     }
                     case 13: {
                         player.addMoney(5);
-                        description = "Du fangede Mewtwo med en normal pokeball!!! modtag 5M";
                         break;
                     }
                     case 14: {
                         player.addMoney(6);
-                        description = "Du har vundet en ny bil, og sælger den gamle, modtag 6M";
                         break;
                     }
                     case 15: {
                         player.addMoney(7);
-                        description = "Du vandt over the elite four og ham den sidste i alle generations!!! modtag 7M";
                         break;
                     }
                     case 16: {
                         player.addMoney(8);
-                        description = "Du har fanget alle pokemoner i alle generationer!!!, modtag 8M";
                         break;
                     }
                     default: {
-
                         break;
                     }
                 }
@@ -114,7 +97,28 @@ public class Chance extends Field{
         } while(!cardTaken);
     }
 
-    public static String getDescription() {
+    public static String[]createDescription(){
+        description[0] = "Du tabte til din pokemon rival i først battel, betal 8M.";
+        description[1] = "Du får et get-out-of-jail-free-card :=)";
+        description[2] = "Din bil har kørt i forlang tid og skal burge reperationer, betal 6M.";
+        description[3] = "Du har spist ALT for meget slik, betal 5M.";
+        description[4] = "Du brugte din masterball på en pidgey, betal 4M";
+        description[5] = "Du har kørt for hurtigt og har fået en fartbøde, betal 3M.";
+        description[6] = "Du har spist for meget slik, betal 2M.";
+        description[7] = "Du har spist slik, betal 1M.";
+        description[8] = "Du går en tur, og ser nogle penge liggende på vejen, modtag 1M";
+        description[9] = "Du er heldig at finde et lille lotteri, modtag 2M";
+        description[10] = "Du har fundet en shiny pokemon! modtag 3M";
+        description[11] = "Du har brugt din masterball på Mewtwo, modtag 4M";
+        description[12] = "Du fangede Mewtwo med en normal pokeball!!! modtag 5M";
+        description[13] = "Du har vundet en ny bil, og sælger den gamle, modtag 6M";
+        description[14] = "Du vandt over the elite four og ham den sidste i alle generations!!! modtag 7M";
+        description[15] = "Du har fanget alle pokemoner i alle generationer!!!, modtag 8M";
+
+        return description;
+    }
+
+    public static String[] getDescription() {
         return description;
     }
 }
