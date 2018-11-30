@@ -21,14 +21,15 @@ public class GoToPrison extends Field{
     //-----------------------------------
     // Kalkulerer en spillers løsladelse
     //-----------------------------------
-    public void release(Player player){
-        if (player.getReleaseCard()){
-            player.setReleaseCard(false);
-            player.setInPrison(false);
-        }
-        else{
-            player.addMoney(-1);
-            player.setInPrison(false);
+    public static void release(Player player) {
+        if (player.getInPrison()) {
+            if (player.getReleaseCard()) {
+                player.setReleaseCard(false);
+                player.setInPrison(false);
+            } else {
+                player.addMoney(-1);
+                player.setInPrison(false);
+            }
         }
     }
 }

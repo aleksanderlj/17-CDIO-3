@@ -37,12 +37,12 @@ public class Property extends Field{
     //-------------------------------
     public void payRent(Player player){
         player.addMoney(-rent);
-        int saldo = player.getBalance();
+        int balance = player.getBalance();
 
-        if (saldo >= 0)
+        if (balance >= 0)
             owner.addMoney(rent);
         else
-            owner.addMoney(rent + saldo);
+            owner.addMoney(rent + balance);
     }
 
     //-------------------------------
