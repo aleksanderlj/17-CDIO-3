@@ -2,34 +2,28 @@ package Components;
 
 import Fields.Field;
 import GUI_our.Gui_fun;
-import gui_main.GUI;
 
 public class Game {
     private Board board = new Board();
     private Gui_fun gui = new Gui_fun();
 
-    public void setupBoard(){
+    private void setupBoard(){
         gui.createBoard();
 
         int numPlayers = gui.createPlayers();
         board.createPlayers(numPlayers);
-
-        gui.addPlayersToBoard();
     }
 
     public void playGame(){
         boolean noLoser = true;
+        Die die = new Die(6);
 
         setupBoard();
 
-        Die die = new Die(6);
-
-        //SLET DETTE
         Player[] players = board.getPlayers();
         Field[] fields = board.getFields();
-        GUI gui_board = gui.getGui_Board();
 
-        gui.updatePlayerPos(players);
+        gui.update(fields, players);
 
         do{
             for(int n=0 ; n < players.length ; n++){
@@ -38,9 +32,8 @@ public class Game {
                     fields[18].release(players[n]);
                 }
 
-                gui_board.getUserButtonPressed("Roll","Roll");
                 int roll = die.roll();
-                gui_board.setDie(roll);
+                gui.displayDie(roll);
 
                 int pastPosition = players[n].getPosition();
                 players[n].move(roll);
@@ -70,6 +63,5 @@ public class Game {
         } while(noLoser);
 
         gui.displayWinner(players);
-
     }
 }

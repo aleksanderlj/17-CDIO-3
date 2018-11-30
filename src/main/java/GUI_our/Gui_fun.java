@@ -85,24 +85,33 @@ public class Gui_fun {
             this.gui_players[n] = new GUI_Player(names[n], startBalance, cars[n]);
         }
 
+        addPlayersToBoard();
         return numPlayers;
     }
 
-    public void addPlayersToBoard(){
+    private String[] setPlayerNames(int numPlayers){
+        String[] names = new String[numPlayers];
+
+        for (int n=0 ; n < numPlayers ; n++){
+            names[n] = gui_board.getUserString("Spiller " + (n+1) + "'s navn: ");
+        }
+
+        return names;
+    }
+
+    private void addPlayersToBoard(){
         for(GUI_Player player : gui_players){
             gui_board.addPlayer(player);
         }
     }
 
-    public GUI getGui_Board() {
-        return gui_board;
+    public void update(Field[] fields, Player[] players){
+        updatePlayerPos(players);
+        updateOwnership(fields, players);
+        updatePlayerBalance(players);
     }
 
-    public GUI_Player[] getGui_Players() {
-        return gui_players;
-    }
-
-    public void updatePlayerPos(Player[] players){
+    private void updatePlayerPos(Player[] players){
         for(int n=0 ; n < players.length ; n++){
             for (int i=0 ; i < gui_fields.length; i++){
                 if (players[n].getPosition() == i)
@@ -110,11 +119,10 @@ public class Gui_fun {
                 else
                     gui_fields[i].setCar(gui_players[n], false);
             }
-
         }
     }
 
-    public void updateOwnership(Field[] data_fields, Player[] data_players){
+    private void updateOwnership(Field[] data_fields, Player[] data_players){
         for(int i=0 ; i < data_players.length ; i++){
             for(int h=0 ; h < data_fields.length ; h++){
                 if(data_fields[h].getOwner() == data_players[i]){
@@ -124,19 +132,26 @@ public class Gui_fun {
         }
     }
 
-    public boolean displayEffect(int pos, int index, Field[] data_fields){
+    private void updatePlayerBalance(Player[] players){
+        for (int n=0 ; n < gui_players.length ; n++)
+            gui_players[n].setBalance(players[n].getBalance());
+    }
+
+    public void displayDie(int face){
+        gui_board.getUserButtonPressed("Roll","Roll");
+        gui_board.setDie(face);
+    }
+
+    public void displayEffect(int pos, int index, Field[] data_fields){
         String text = "";
-        boolean chance = false;
 
         text += gui_players[index].getName() + " landte på " + gui_fields[pos].getTitle() + "\n";
 
         if (pos == 0)
             text += "Du får 2M ekstra!";
 
-        else if ((pos % 6) == 3) {
+        else if ((pos % 6) == 3)
             text += Chance.getDescription();
-            chance = true;
-        }
 
         else if (pos == 6)
             text += "Du er på besøg i fængslet";
@@ -159,19 +174,6 @@ public class Gui_fun {
         }
 
         gui_board.displayChanceCard(text);
-
-        return chance;
-    }
-
-    public void updatePlayerBalance(Player[] players){
-        for (int n=0 ; n < gui_players.length ; n++)
-            gui_players[n].setBalance(players[n].getBalance());
-    }
-
-    public void update(Field[] fields, Player[] players){
-        updatePlayerPos(players);
-        updateOwnership(fields, players);
-        updatePlayerBalance(players);
     }
 
     public void displayWinner(Player[] players){
@@ -184,19 +186,8 @@ public class Gui_fun {
                 winner = gui_players[n].getName();
             }
         }
-
         text = winner + " har vundet!";
 
         gui_board.displayChanceCard(text);
-    }
-
-    private String[] setPlayerNames(int numPlayers){
-        String[] names = new String[numPlayers];
-
-        for (int n=0 ; n < numPlayers ; n++){
-            names[n] = gui_board.getUserString("Spiller " + (n+1) + "'s navn: ");
-        }
-
-        return names;
     }
 }
