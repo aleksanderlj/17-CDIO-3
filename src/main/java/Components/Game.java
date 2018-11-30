@@ -7,6 +7,7 @@
 package Components;
 
 import Fields.Field;
+import Fields.GoToPrison;
 import GUI_our.Gui_fun;
 
 public class Game {
@@ -40,8 +41,8 @@ public class Game {
         do{
             for(int n=0 ; n < players.length ; n++){
 
-                if (players[n].getInPrison()) {
-                    fields[18].release(players[n]);
+                if (players[n].getInPrison() && (fields[18] instanceof GoToPrison)) {
+                    ((GoToPrison)fields[18]).release(players[n]);
                 }
 
                 int roll = die.roll();

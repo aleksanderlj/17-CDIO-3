@@ -10,7 +10,7 @@ import Fields.*;
 
 public class Player {
     private Account account;
-    private Field[] ownedProperties = new Property[16];
+    private Property[] ownedProperties = new Property[16];
     private int position = 0;
     private boolean inPrison = false;
     private boolean releaseCard = false;
@@ -45,7 +45,7 @@ public class Player {
     //-------------------------------------------
     // Tilføjer en grund til spillerens inventar
     //-------------------------------------------
-    public void addProperty(Field newProperty){
+    public void addProperty(Property newProperty){
         int nextIndex = 0;
         boolean propertyAdded = false;
 
