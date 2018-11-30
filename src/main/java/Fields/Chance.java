@@ -21,7 +21,7 @@ public class Chance extends Field{
                 switch (cardDeck[cardIndex]) {
                     case 1: {
                         player.addMoney(-8);
-                        description = "Du har spist for ALT meget slik, betal 8M.";
+                        description = "Du tabte til din pokemon rival i først battel, betal 8M.";
                         break;
                     }
                     case 2: {
@@ -32,12 +32,12 @@ public class Chance extends Field{
 
                     case 3: {
                         player.addMoney(-6);
-                        description = "Du har drukket for meget sodavand, betal 6M.";
+                        description = "Din bil har kørt i forlang tid og skal burge reperationer, betal 6M.";
                         break;
                     }
                     case 4: {
                         player.addMoney(-5);
-                        description = "Du har spist ret meget for meget slik, betal 5M.";
+                        description = "Du har spist ALT for meget slik, betal 5M.";
                         break;
                     }
                     case 5: {
@@ -46,7 +46,7 @@ public class Chance extends Field{
                     }
                     case 6: {
                         player.addMoney(-3);
-                        description = "Du har spist okay for meget slik, betal 3M.";
+                        description = "Du har kørt for hurtigt og har fået en fartbøde, betal 3M.";
                         break;
                     }
                     case 7: {
@@ -61,12 +61,12 @@ public class Chance extends Field{
                     }
                     case 9: {
                         player.addMoney(1);
-                        description = "Du har ikke spist slik, modtag 1M";
+                        description = "Du går en tur, og ser nogle penge liggende på vejen, modtag 1M";
                         break;
                     }
                     case 10: {
                         player.addMoney(2);
-                        description = "Du har slet ikke spist slik, modtag 2M";
+                        description = "Du er heldig at finde et lille lotteri, modtag 2M";
                         break;
                     }
                     case 11: {
@@ -81,12 +81,12 @@ public class Chance extends Field{
                     }
                     case 13: {
                         player.addMoney(5);
-                        description = "Du har overhovedet ikke spist slik, modtag 5M";
+                        description = "Du fangede Mewtwo med en normal pokeball!!! modtag 5M";
                         break;
                     }
                     case 14: {
                         player.addMoney(6);
-                        description = "Du har aldrig ikke spist slik, modtag 6M";
+                        description = "Du har vundet en ny bil, og sælger den gamle, modtag 6M";
                         break;
                     }
                     case 15: {
@@ -96,7 +96,7 @@ public class Chance extends Field{
                     }
                     case 16: {
                         player.addMoney(8);
-                        description = "Du har fanget alle pokemons, som findes, modtag 8M";
+                        description = "Du har fanget alle pokemoner i alle generationer!!!, modtag 8M";
                         break;
                     }
                     default: {
