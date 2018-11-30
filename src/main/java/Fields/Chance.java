@@ -1,3 +1,9 @@
+//******************************************************************
+//  Chance.java        Author: Gruppe 17
+//
+//  Et felt som indeholder et dæk kort med forskellige effekter
+//******************************************************************
+
 package Fields;
 
 import Components.*;
@@ -118,6 +124,9 @@ public class Chance extends Field{
         return description;
     }
 
+    //-------------------------------
+    // Getters og setters
+    //-------------------------------
     public static String[] getDescription() {
         return description;
     }

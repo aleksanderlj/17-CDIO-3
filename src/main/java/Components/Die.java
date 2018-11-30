@@ -1,3 +1,9 @@
+//******************************************************************
+//  Die.java        Author: Gruppe 17
+//
+//  Repræsenterer en terning
+//******************************************************************
+
 package Components;
 
 import java.util.Random;

@@ -1,46 +1,51 @@
+//******************************************************************
+//  Game.java        Author: Gruppe 17
+//
+//  Controller som tager input fra data og view og sætter det sammen
+//******************************************************************
+
 package Components;
 
+import Fields.Chance;
 import Fields.Field;
+import Fields.GoToPrison;
 import GUI_our.Gui_fun;
-import gui_main.GUI;
 
 public class Game {
     private Board board = new Board();
     private Gui_fun gui = new Gui_fun();
 
-    public void setupBoard(){
+    //-------------------------------------------------------------
+    // Sætter et gui-bræt op og spørger brugeren om antal spillere
+    //-------------------------------------------------------------
+    private void setupBoard(){
         gui.createBoard();
 
         int numPlayers = gui.createPlayers();
         board.createPlayers(numPlayers);
-
-        gui.addPlayersToBoard();
     }
 
+    //--------------------------------------------------------------------------
+    // Styrer hele spillets forløb (inklusiv runder), samt et par mindre regler
+    //--------------------------------------------------------------------------
     public void playGame(){
         boolean noLoser = true;
+        Die die = new Die(6);
 
         setupBoard();
 
-        Die die = new Die(6);
-
-        //SLET DETTE
         Player[] players = board.getPlayers();
         Field[] fields = board.getFields();
-        GUI gui_board = gui.getGui_Board();
 
-        gui.updatePlayerPos(players);
+        gui.update(fields, players);
 
         do{
             for(int n=0 ; n < players.length ; n++){
 
-                if (players[n].getInPrison()) {
-                    fields[18].release(players[n]);
-                }
+                GoToPrison.release(players[n]);
 
-                gui_board.getUserButtonPressed("Roll","Roll");
                 int roll = die.roll();
-                gui_board.setDie(roll);
+                gui.displayDie(roll);
 
                 int pastPosition = players[n].getPosition();
                 players[n].move(roll);
@@ -51,11 +56,11 @@ public class Game {
 
                 gui.update(fields, players);
 
-                if ((position % 6) == 3) {
+                if (fields[position] instanceof Chance) {
                     fields[position].landOn(players[n]);
                     gui.displayEffect(3, n, fields);
                 }
-                else{
+                else{ //Display skal vises først hvis du lander på en grund, da GUI har en tendens til at sige at du ejer et felt på turen du købte det
                     gui.displayEffect(position, n, fields);
                     fields[position].landOn(players[n]);
                 }
@@ -70,6 +75,5 @@ public class Game {
         } while(noLoser);
 
         gui.displayWinner(players);
-
     }
 }

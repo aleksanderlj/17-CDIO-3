@@ -1,3 +1,9 @@
+//******************************************************************
+//  ChanceCards.java        Author: Gruppe 17
+//  Support til Chance.java
+//  Laver et dæk kort og blander dem
+//******************************************************************
+
 package Fields;
 
 import Components.Die;
@@ -6,6 +12,9 @@ public class ChanceCards {
     final static int CARDAMOUNT = 16;
     private int[] cardDeck = new int[CARDAMOUNT];
 
+    //---------------------------------------------------------
+    // Contructor, laver et dæk af kort (int's) og blander dem
+    //---------------------------------------------------------
     public ChanceCards(){
         for(int n = 1 ; n <= cardDeck.length ; n++)
             cardDeck[n-1] = n;
@@ -13,6 +22,9 @@ public class ChanceCards {
         cardDeck = shuffle(cardDeck);
     }
 
+    //-------------------------------
+    // Blander et dæk af kort
+    //-------------------------------
     public int[] shuffle(int[] cardDeck){
         Die die = new Die(CARDAMOUNT);
         int[] shuffledDeck = new int[CARDAMOUNT];
@@ -29,6 +41,9 @@ public class ChanceCards {
         return shuffledDeck;
     }
 
+    //-------------------------------
+    // Getters og setters
+    //-------------------------------
     public int[] getCardDeck() {
         return cardDeck;
     }

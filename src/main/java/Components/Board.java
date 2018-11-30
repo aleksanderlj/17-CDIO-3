@@ -1,3 +1,9 @@
+//******************************************************************
+//  Board.java        Author: Gruppe 17
+//
+//  Repræsenterer et spillebræt
+//******************************************************************
+
 package Components;
 
 import Fields.*;
@@ -8,7 +14,9 @@ public class Board {
     private Player[] players;
     private String playerName = "Spiller";
 
-
+    //-------------
+    // Constructor
+    //-------------
     public Board(){
         int i = 0;
         fields = new Field[24];
@@ -39,18 +47,21 @@ public class Board {
         fields[i++] = new Property(5, 5);
     }
 
-    public Player[] createPlayers(int numPlayers){
+    //------------------------------------------------------------------
+    // Laver spillere og giver dem et startbeløb baseret på deres antal
+    //------------------------------------------------------------------
+    public void createPlayers(int numPlayers){
         players = new Player[numPlayers];
         int startBalance = 24 - (numPlayers * 2);
 
         for (int n=0 ; n < numPlayers ; n++){
             players[n] = new Player(startBalance);
         }
-
-        return players;
     }
 
-
+    //-------------------------------
+    // Getters og setters
+    //-------------------------------
     public Field[] getFields() {
         return fields;
     }
