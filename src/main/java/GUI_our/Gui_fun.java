@@ -66,7 +66,6 @@ public class Gui_fun {
         String numPlayersInput;
         int numPlayers, startBalance;
         String[] names;
-        GUI_Player[] gui_players;
         GUI_Car car1, car2, car3, car4;
         car1 = new GUI_Car(red, black, CAR, FILL);
         car2 = new GUI_Car(blue, black, CAR, FILL);

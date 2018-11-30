@@ -14,7 +14,7 @@ public class Chance extends Field{
     }
 
     public void landOn(Player player) {
-        boolean cardTaken = false;
+        boolean cardTaken;
 
         do {
             if (cardIndex < cardDeck.length) {
@@ -112,14 +112,6 @@ public class Chance extends Field{
                 cardTaken = false;
             }
         } while(!cardTaken);
-    }
-
-    public static int getCardIndex() {
-        return cardIndex;
-    }
-
-    public static int[] getCardDeck() {
-        return cardDeck;
     }
 
     public static String getDescription() {

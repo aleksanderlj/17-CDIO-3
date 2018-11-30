@@ -5,9 +5,6 @@ public abstract class Field{
     public abstract void landOn(Player player);
 
 
-
-
-
     //Disse bliver nødt til at være her for at field metoderne virker
     public boolean hasOwner(){
         return false;

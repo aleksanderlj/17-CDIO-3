@@ -2,7 +2,6 @@ package Components;
 
 import Fields.Field;
 import GUI_our.Gui_fun;
-import gui_fields.GUI_Player;
 import gui_main.GUI;
 
 public class Game {
@@ -72,13 +71,5 @@ public class Game {
 
         gui.displayWinner(players);
 
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
-    public Gui_fun getGui() {
-        return gui;
     }
 }

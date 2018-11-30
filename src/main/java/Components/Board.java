@@ -1,7 +1,6 @@
 package Components;
 
 import Fields.*;
-import java.util.Scanner;
 
 public class Board {
     private int startBalance;
