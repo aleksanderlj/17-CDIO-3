@@ -193,7 +193,7 @@ public class Gui_fun {
             text += "Du får 2M ekstra!";
 
         else if (data_fields[pos] instanceof Chance)
-            text += Chance.getDescription();
+            text += Chance.getNextDescription();
 
         else if (pos == 6)
             text += "Du er på besøg i fængslet";

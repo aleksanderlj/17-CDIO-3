@@ -6,7 +6,6 @@
 
 package Components;
 
-import Fields.Chance;
 import Fields.Field;
 import Fields.GoToPrison;
 import GUI_our.Gui_fun;
@@ -47,23 +46,13 @@ public class Game {
                 int roll = die.roll();
                 gui.displayDie(roll);
 
-                int pastPosition = players[n].getPosition();
                 players[n].move(roll);
                 int position = players[n].getPosition();
 
-                if (pastPosition > position)
-                    players[n].addMoney(2);
-
                 gui.update(fields, players);
 
-                if (fields[position] instanceof Chance) {
-                    fields[position].landOn(players[n]);
-                    gui.displayEffect(3, n, fields);
-                }
-                else{ //Display skal vises først hvis du lander på en grund, da GUI har en tendens til at sige at du ejer et felt på turen du købte det
-                    gui.displayEffect(position, n, fields);
-                    fields[position].landOn(players[n]);
-                }
+                gui.displayEffect(position, n, fields);
+                fields[position].landOn(players[n]);
 
                 gui.update(fields, players);
 

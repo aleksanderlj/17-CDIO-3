@@ -30,9 +30,14 @@ public class Player {
     // Flytter spilleren
     //-------------------------------
     public void move(int spaces){
-        position += spaces;
+        int oldPosition = this.position;
+        this.position += spaces;
+
         if (position > 23)
-            position = position - 23;
+            this.position = this.position - 23;
+
+        if (oldPosition > this.position)
+            this.addMoney(2);
     }
 
     //-------------------------------------
