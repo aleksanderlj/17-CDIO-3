@@ -1,3 +1,9 @@
+//******************************************************************
+//  Blank.java        Author: Gruppe 17
+//
+//  Et felt som har ingen effekt
+//******************************************************************
+
 package Fields;
 
 import Components.Player;

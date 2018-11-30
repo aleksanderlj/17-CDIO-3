@@ -1,3 +1,9 @@
+//******************************************************************
+//  Chance.java        Author: Gruppe 17
+//
+//  Et felt som indeholder et dæk kort med forskellige effekter
+//******************************************************************
+
 package Fields;
 
 import Components.*;
@@ -9,10 +15,16 @@ public class Chance extends Field{
     private Field[] fields;
     private static String[] description;
 
+    //-------------
+    // Constructor
+    //-------------
     public Chance(Field[] fields){
         this.fields = fields;
     }
 
+    //----------------------------------------------------------------------------------
+    // Når en spiller lander på dette felt, trækker han et chancekort som har en effekt
+    //----------------------------------------------------------------------------------
     public void landOn(Player player) {
         boolean cardTaken;
 
@@ -96,6 +108,12 @@ public class Chance extends Field{
             }
         } while(!cardTaken);
     }
+
+
+    //-------------------------------
+    // Getters og setters
+    //-------------------------------
+    public static String getDescription() {
 
     public static String[]createDescription(){
         description[0] = "Du tabte til din pokemon rival i først battel, betal 8M.";

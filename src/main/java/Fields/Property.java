@@ -1,3 +1,9 @@
+//******************************************************************
+//  Property.java        Author: Gruppe 17
+//
+//  Felt som repræsenterer en grund en spiller kan købe
+//******************************************************************
+
 package Fields;
 import Components.Player;
 
@@ -6,11 +12,17 @@ public class Property extends Field{
     private int rent;
     private Player owner;
 
+    //-------------
+    // Constructor
+    //-------------
     public Property(int value,int rent){
         this.value = value;
         this.rent = rent;
     }
 
+    //-----------------------------------------------------------------------
+    // Når en spiller lander her, betaler han enten leje eller køber grunden
+    //-----------------------------------------------------------------------
     public void landOn(Player player){
         if (player != owner){
             if (hasOwner())
@@ -20,16 +32,22 @@ public class Property extends Field{
         }
     }
 
+    //-------------------------------
+    // En spiller betaler leje
+    //-------------------------------
     public void payRent(Player player){
         player.addMoney(-rent);
-        int saldo = player.getBalance();
+        int balance = player.getBalance();
 
-        if (saldo >= 0)
+        if (balance >= 0)
             owner.addMoney(rent);
         else
-            owner.addMoney(rent + saldo);
+            owner.addMoney(rent + balance);
     }
 
+    //-------------------------------
+    // En spiller køber grunden
+    //-------------------------------
     public void buyProperty(Player player){
         player.addMoney(-value);
         int saldo = player.getBalance();
@@ -38,6 +56,9 @@ public class Property extends Field{
             player.addProperty(this);
     }
 
+    //--------------------------------
+    // Tjekker om grunden har en ejer
+    //--------------------------------
     public boolean hasOwner(){
         return (owner != null);
     }

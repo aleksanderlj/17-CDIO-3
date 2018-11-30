@@ -1,3 +1,9 @@
+//******************************************************************
+//  Main.java        Author: Gruppe 17
+//
+//  Kører metoder til at køre spillet
+//******************************************************************
+
 package Components;
 
 public class Main {
