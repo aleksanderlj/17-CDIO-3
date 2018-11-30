@@ -1,3 +1,9 @@
+//******************************************************************
+//  Player.java        Author: Gruppe 17
+//
+//  Repræsenterer en spiller
+//******************************************************************
+
 package Components;
 
 import Fields.*;
@@ -11,22 +17,34 @@ public class Player {
     private static int nextID = 0;
     private int id;
 
+    //-------------
+    // Constructor
+    //-------------
     public Player(int startBalance){
         account = new Account(startBalance);
         id = nextID;
         nextID++;
     }
 
+    //-------------------------------
+    // Flytter spilleren
+    //-------------------------------
     public void move(int spaces){
         position += spaces;
         if (position > 23)
             position = position - 23;
     }
 
+    //-------------------------------------
+    // Tilføjer penge til spillerens konto
+    //-------------------------------------
     public void addMoney(int profit){
         account.addMoney(profit);
     }
 
+    //-------------------------------------------
+    // Tilføjer en grund til spillerens inventar
+    //-------------------------------------------
     public void addProperty(Field newProperty){
         int nextIndex = 0;
         boolean propertyAdded = false;
@@ -46,6 +64,9 @@ public class Player {
         }while(!propertyAdded);
     }
 
+    //-----------------------------------------
+    // Sælger en grund fra spillerens inventar
+    //-----------------------------------------
     public void sellProperty(Property sellProperty){
         for(int n=0 ; n < ownedProperties.length; n++){
             if (ownedProperties[n] == sellProperty){
@@ -57,6 +78,9 @@ public class Player {
         }
     }
 
+    //---------------------------------------------
+    // Fjerner alle grunde fra spillerens inventar
+    //---------------------------------------------
     public void removeAllProperties(){
         for(int n=0 ; n < ownedProperties.length ; n++){
             ownedProperties[n].setOwner(null);

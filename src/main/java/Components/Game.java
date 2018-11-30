@@ -1,3 +1,9 @@
+//******************************************************************
+//  Game.java        Author: Gruppe 17
+//
+//  Controller som tager input fra data og view og sætter det sammen
+//******************************************************************
+
 package Components;
 
 import Fields.Field;
@@ -7,6 +13,9 @@ public class Game {
     private Board board = new Board();
     private Gui_fun gui = new Gui_fun();
 
+    //-------------------------------------------------------------
+    // Sætter et gui-bræt op og spørger brugeren om antal spillere
+    //-------------------------------------------------------------
     private void setupBoard(){
         gui.createBoard();
 
@@ -14,6 +23,9 @@ public class Game {
         board.createPlayers(numPlayers);
     }
 
+    //--------------------------------------------------------------------------
+    // Styrer hele spillets forløb (inklusiv runder), samt et par mindre regler
+    //--------------------------------------------------------------------------
     public void playGame(){
         boolean noLoser = true;
         Die die = new Die(6);
